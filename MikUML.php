@@ -57,10 +57,14 @@ function wfMikUML() {
 // return true;
 // }
 function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
-	$umlcode = str_replace ( "<br>", "\r\n", $umlcode );
-	$umlcode = str_replace ( "&gt;", ">", $umlcode );
+	// $umlcode = str_replace ( "<br>", "\r\n", $umlcode );
+	// $umlcode = str_replace ( "&gt;", ">", $umlcode );
 	$umlcode = $parser->internalParse ( $umlcode );
-	$umlcode = preg_replace ( "/<a\s(.+?)>(.+?)<\/a>/is", "[[$2]]", $umlcode );
+	$umlcode = str_replace ( "<br>", "\r\n", $umlcode );
+	$umlcode = str_replace ( "<br/>", "\r\n", $umlcode );
+	$umlcode = str_replace ( "<br />", "\r\n", $umlcode );
+	$umlcode = str_replace ( "&gt;", ">", $umlcode );
+	$umlcode = preg_replace ( "/<a\s(.+?)href=\"(.+?)\">(.+?)<\/a>/is", "[[$2 $3]]", $umlcode );
 	$umlcode = $umlcode . "\n";
 	if (is_null ( $umlcode ) || $umlcode === '') {
 		throw new MikUMLException ( 'umlcode is null or empty' );
