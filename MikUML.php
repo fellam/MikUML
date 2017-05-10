@@ -57,10 +57,11 @@ function wfMikUML() {
 // return true;
 // }
 function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
-	$replace = "<br>";
+	$umlcode = str_replace ( "<br>", "\r\n", $umlcode );
+	$umlcode = str_replace ( "&gt;", ">", $umlcode );
 	$umlcode = $parser->internalParse ( $umlcode );
-	$umlcode = str_replace ( $replace, "\r\n", $umlcode );
-	$umlcode = $umlcode . "\r\n";
+	$umlcode = preg_replace ( "/<a\s(.+?)>(.+?)<\/a>/is", "[[$2]]", $umlcode );
+	$umlcode = $umlcode . "\n";
 	if (is_null ( $umlcode ) || $umlcode === '') {
 		throw new MikUMLException ( 'umlcode is null or empty' );
 	}
@@ -68,7 +69,7 @@ function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 		throw new MikUMLException ( 'PlantUML extension not found!' );
 	}
 	$result = "";
-	$result = renderUML ( $umlcode, $args, $parser, $frame);
+	$result = renderUML ( $umlcode, $args, $parser, $frame );
 	return array (
 			$result,
 			'noparse' => true,
