@@ -55,8 +55,9 @@ Note: some parser function such as #replace seems not properly being parsed, a w
 
 ;Example
 <code>
-<nowiki>{{#</nowiki>var:participant|participant name #color<nowiki>}}</nowiki>
-<nowiki><mikuml></nowiki>actor Mik #99FF99<nowiki><mikuml></nowiki>
+<nowiki>{{#</nowiki>vardefine:participant|actor Mik #99FF99<nowiki>}}</nowiki>
+
+<nowiki><mikuml>{{#</nowiki>var:participant|<nowiki>}}<mikuml></nowiki>
 </code> 
 
 ==See also==
