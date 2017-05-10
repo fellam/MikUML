@@ -56,22 +56,10 @@ function wfMikUML() {
 // }
 // return true;
 // }
-function mikuml($input, $args, Parser $parser, PPFrame $frame) {
+function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 	// function uml( &$parser, $umlcode = "", $attrs = "", $imagetype = 'svg' ) {
 	// $parser->disableCache();
 	global $plantumlImagetype;
-	// $attrs = "";
-	// $imagetype = 'svg';
-	echo "input";
-	var_dump ( $input );
-	echo "<br>";
-	echo "args";
-	var_dump ( $args );
-	echo "<br>";
-	echo "frame";
-	var_dump ( $frame );
-	echo "<br>";
-	exit ();
 	$replace = "<br>";
 	$umlcode = str_replace ( $replace, "\r\n", $umlcode );
 	if (is_null ( $umlcode ) || $umlcode === '') {
@@ -81,16 +69,17 @@ function mikuml($input, $args, Parser $parser, PPFrame $frame) {
 		throw new MikUMLException ( 'PlantUML extension not found!' );
 	}
 	$result = "";
-	if (! is_null ( $imagetype )) {
-		$prev_plantumlImagetype = $plantumlImagetype;
-		switch ($imagetype) {
-			case 'svg' :
-			case 'png' :
-				$plantumlImagetype = $imagetype;
-				break;
-		}
-	}
-	$result = renderUML ( $umlcode, array (), $parser );
+// 	if (! is_null ( $imagetype )) {
+// 		$prev_plantumlImagetype = $plantumlImagetype;
+// 		switch ($imagetype) {
+// 			case 'svg' :
+// 			case 'png' :
+// 				$plantumlImagetype = $imagetype;
+// 				break;
+// 		}
+// 	}
+// 	$result = renderUML ( $umlcode, array (), $parser );
+	$result = renderUML ( $umlcode, $args, $parser, $frame);
 	$plantumlImagetype = $prev_plantumlImagetype;
 	foreach ( explode ( ',', $attrs ) as $key => $value ) {
 		$a = explode ( '=', $value );
