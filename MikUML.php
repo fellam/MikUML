@@ -46,9 +46,10 @@ $wgExtensionCredits['parserhook'][] = array(
 
 function wfMikUML() {
 	global $wgParser, $wgExtMikUML;
- 
+ 	
 	$wgExtMikUML = new ExtMikUML();
-  $wgParser->setFunctionHook( 'uml', array( &$wgExtMikUML, 'uml' ) );
+//  	$wgParser->setFunctionHook( 'uml', array( &$wgExtMikUML, 'uml' ) );
+ 	$wgParser->setHook( 'uml', array( &$wgExtMikUML, 'uml' ) );
 }
  
 function wfMikUMLLanguageGetMagic( &$magicWords, $langCode ) {
