@@ -44,7 +44,7 @@ function wfMikUML() {
   $wgParser->setFunctionHook( 'uml', array( &$wgExtMikUML, 'uml' ) );
 }
  
-function wfMikFunctionsLanguageGetMagic( &$magicWords, $langCode ) {
+function wfMikUMLLanguageGetMagic( &$magicWords, $langCode ) {
 	switch ( $langCode ) {
 	default:
 		$magicWords['uml']    = array( 0, 'uml' );
@@ -66,10 +66,10 @@ class ExtMikUML {
 		$replace = "<br>";
 		$umlcode = str_replace($replace,"\r\n",$umlcode);
 		if(is_null($umlcode)||$umlcode===''){
-			throw new MikFunctionsException('umlcode is null or empty');
+			throw new MikUMLException('umlcode is null or empty');
 		}
 		if(!function_exists('mb_convert_encoding')) {
-			throw new MikFunctionsException('PlantUML extension not found!');
+			throw new MikUMLException('PlantUML extension not found!');
 		}
 		$result = "";
 		if(!is_null($imagetype)) {
