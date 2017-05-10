@@ -60,6 +60,7 @@ function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 	// function uml( &$parser, $umlcode = "", $attrs = "", $imagetype = 'svg' ) {
 	// $parser->disableCache();
 // 	global $plantumlImagetype;
+	global $wgOut;
 	echo "DEBUG:";
 	var_dump($umlcode);
 	echo "<br>";
@@ -68,7 +69,7 @@ function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 	$umlcode = str_replace ( $replace, "\r\n", $umlcode );
 	echo "UMLAFT:$umlcode<br>";
 	echo "PARSE:<br>";
-	echo $parser->parse($umlcode);
+	$wgOut->parse( $text );
 	echo "<br>";
 	if (is_null ( $umlcode ) || $umlcode === '') {
 		throw new MikUMLException ( 'umlcode is null or empty' );
