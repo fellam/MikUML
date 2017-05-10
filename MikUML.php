@@ -20,23 +20,30 @@
  Version 1.0 
  
 */
+
  
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if ( !defined( 'MEDIAWIKI' ) ) {
    die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
- 
-$wgExtensionFunctions[] = 'wfMikUML';
-$wgExtensionCredits['parserhook'][] = array(
-	'name' => 'MikUML',
-	'version' => '1.0',
-	'url' => 'https://www.mediawiki.org/wiki/Extension:MikUML',
-	'author' => 'Michele Fella',   
-	'description' => 'Defines parser for PlantUML.'
-);
- 
+
+// Avoid unstubbing $wgParser too early on modern (1.12+) MW versions, as per r35980
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'wfMikUML';
+} else {
+	$wgExtensionFunctions[] = 'wfMikUML';
+}
+
 $wgHooks['LanguageGetMagic'][] = 'wfMikUMLLanguageGetMagic';
  
+$wgExtensionCredits['parserhook'][] = array(
+		'name' => 'MikUML',
+		'version' => '1.0',
+		'url' => 'https://www.mediawiki.org/wiki/Extension:MikUML',
+		'author' => 'Michele Fella',
+		'description' => 'Defines parser for PlantUML.'
+);
+
 function wfMikUML() {
 	global $wgParser, $wgExtMikUML;
  
@@ -60,9 +67,17 @@ class ExtMikUML {
 		return $wgRequest->getVal($name, $default);
 	}
  
-  function uml( &$parser, $umlcode = "", $attrs = "", $imagetype = 'svg'  ) {
+  function uml( $input, $args, Parser $parser, PPFrame $frame ){
+//   function uml( &$parser, $umlcode = "", $attrs = "", $imagetype = 'svg'  ) {
 		//$parser->disableCache();
 		global $plantumlImagetype;
+// 		$attrs = "";
+// 		$imagetype = 'svg';
+		var_dump($input);
+		echo "<br>";
+		var_dump($args);
+		echo "<br>";
+		exit;
 		$replace = "<br>";
 		$umlcode = str_replace($replace,"\r\n",$umlcode);
 		if(is_null($umlcode)||$umlcode===''){
