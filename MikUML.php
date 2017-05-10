@@ -86,14 +86,14 @@ function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 // 	$result = renderUML ( $umlcode, array (), $parser );
 	$result = renderUML ( $umlcode, $args, $parser, $frame);
 // 	$plantumlImagetype = $prev_plantumlImagetype;
-	foreach ( explode ( ',', $attrs ) as $key => $value ) {
-		$a = explode ( '=', $value );
-		// print $a[0]."=".$a[1]."<br/>";
-		if (count ( $a ) > 1) {
-			$result = preg_replace ( '/' . $a [0] . ':\d+px/i', '' . $a [0] . ':' . $a [1], $result );
-		}
-		// print "$result <br/>";
-	}
+// 	foreach ( explode ( ',', $attrs ) as $key => $value ) {
+// 		$a = explode ( '=', $value );
+// 		// print $a[0]."=".$a[1]."<br/>";
+// 		if (count ( $a ) > 1) {
+// 			$result = preg_replace ( '/' . $a [0] . ':\d+px/i', '' . $a [0] . ':' . $a [1], $result );
+// 		}
+// 		// print "$result <br/>";
+// 	}
 	// exit;
 	return array (
 			$result,
