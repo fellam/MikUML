@@ -59,7 +59,7 @@ function wfMikUML() {
 function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 	// function uml( &$parser, $umlcode = "", $attrs = "", $imagetype = 'svg' ) {
 	// $parser->disableCache();
-	global $plantumlImagetype;
+// 	global $plantumlImagetype;
 	$replace = "<br>";
 	$umlcode = str_replace ( $replace, "\r\n", $umlcode );
 	if (is_null ( $umlcode ) || $umlcode === '') {
@@ -80,7 +80,7 @@ function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 // 	}
 // 	$result = renderUML ( $umlcode, array (), $parser );
 	$result = renderUML ( $umlcode, $args, $parser, $frame);
-	$plantumlImagetype = $prev_plantumlImagetype;
+// 	$plantumlImagetype = $prev_plantumlImagetype;
 	foreach ( explode ( ',', $attrs ) as $key => $value ) {
 		$a = explode ( '=', $value );
 		// print $a[0]."=".$a[1]."<br/>";
