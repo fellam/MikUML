@@ -13,7 +13,7 @@
  NOTE: This extension currently works only on *NIX servers 
  Defines a specific parser functions that must clear the cache to be useful.
  
- {#uml:umlcode}} Depends on plantuml extension.
+ <mikuml>umlcode</mikuml> Depends on plantuml extension.
 		process and returns the plant uml object AFTER processiong the raw wikitext (old limitation of plantuml, not verified on version 0.6)
 
  Author: Michele Fella [http://meta.wikimedia.org/wiki/User:Michele.Fella]
@@ -49,16 +49,16 @@ function wfMikUML() {
  	
 	$wgExtMikUML = new ExtMikUML();
 //  	$wgParser->setFunctionHook( 'uml', array( &$wgExtMikUML, 'uml' ) );
- 	$wgParser->setHook( 'uml', array( &$wgExtMikUML, 'uml' ) );
+ 	$wgParser->setHook( 'mikuml', array( &$wgExtMikUML, 'mikuml' ) );
 }
  
-function wfMikUMLLanguageGetMagic( &$magicWords, $langCode ) {
-	switch ( $langCode ) {
-	default:
-		$magicWords['uml']    = array( 0, 'uml' );
-	}
-	return true;
-}
+// function wfMikUMLLanguageGetMagic( &$magicWords, $langCode ) {
+// 	switch ( $langCode ) {
+// 	default:
+// 		$magicWords['uml']    = array( 0, 'uml' );
+// 	}
+// 	return true;
+// }
  
 class ExtMikUML {
  
@@ -68,7 +68,7 @@ class ExtMikUML {
 		return $wgRequest->getVal($name, $default);
 	}
  
-  function uml( $input, $args, Parser $parser, PPFrame $frame ){
+  function mikuml( $input, $args, Parser $parser, PPFrame $frame ){
 //   function uml( &$parser, $umlcode = "", $attrs = "", $imagetype = 'svg'  ) {
 		//$parser->disableCache();
 		global $plantumlImagetype;
