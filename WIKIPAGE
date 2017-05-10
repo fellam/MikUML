@@ -39,7 +39,7 @@ An example of the use case for which this was done:
 But this wont work if you use the uml tag in a template and you want to build your uml code with triple braces vaiables.
 
 It has not been verified yet if PlantUML version 0.6 now properly handles this scenario, any volunteer is welcome to check this,
-in the meanwhile this extension replaces the MikFunction tag <uml> with compatibility with PlantUmL v.0.6
+in the meanwhile this extension replaces the MikFunction ''uml'' with compatibility with PlantUmL v.0.6
 
 {{Note}} This extension currently works only on *NIX servers
 
@@ -52,12 +52,12 @@ in the meanwhile this extension replaces the MikFunction tag <uml> with compatib
 
 === #uml: ===
 
-<code><nowiki>{{#</nowiki>uml:plantumlcode}}</code> 
+<code><nowiki><uml></nowiki>plantumlcode<nowiki></uml></nowiki></code> 
 
 ;Example
 <code><nowiki><uml></nowiki>actor Mik #99FF99<nowiki></uml></nowiki></code> will return the uml object after being processed by the PlantUML extension.
 
-But this wont work if you use the uml tag in a template and you want to build your uml code with triple braces vaiables, insthead, in your template you can use the <code><nowiki>{{#</nowiki>uml:actor Mik #99FF99 }}</code> to obtain the same result. 
+But this wont work if you use the uml tag in a template and you want to build your uml code with triple braces vaiables, insthead, in your template you can use the <code><nowiki><mikuml></nowiki>actor Mik #99FF99<nowiki><mikuml></nowiki></code> to obtain the same result. 
 
 ==See also==
 * [[Extension:MikFunctions]]
