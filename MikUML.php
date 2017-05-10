@@ -62,9 +62,14 @@ function mikuml($input, $args, Parser $parser, PPFrame $frame) {
 	global $plantumlImagetype;
 	// $attrs = "";
 	// $imagetype = 'svg';
+	echo "input";
 	var_dump ( $input );
 	echo "<br>";
+	echo "args";
 	var_dump ( $args );
+	echo "<br>";
+	echo "frame";
+	var_dump ( $frame );
 	echo "<br>";
 	exit ();
 	$replace = "<br>";
