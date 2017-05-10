@@ -61,7 +61,6 @@ function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 	$umlcode = $parser->internalParse ( $umlcode );
 	$umlcode = str_replace ( $replace, "\r\n", $umlcode );
 	$umlcode = $umlcode . "\r\n";
-	echo "UMLAFT:$umlcode<br>";
 	if (is_null ( $umlcode ) || $umlcode === '') {
 		throw new MikUMLException ( 'umlcode is null or empty' );
 	}
