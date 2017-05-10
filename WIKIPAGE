@@ -31,16 +31,6 @@ If you are not familiar with UML and wiki extension you might want to check [htt
 
 The purpose of the function was to override the PlantUML extension tag ''<uml>'', and process the raw wikitext before submitting it to PlantUML for processing.
 
-An example of the use case for which this was done:
-
-;Example
-<code><nowiki><uml></nowiki>actor Mik #99FF99<nowiki></uml></nowiki></code> will return the uml object after being processed by the PlantUML extension.
-
-But this wont work if you use the uml tag in a template and you want to build your uml code with triple braces vaiables.
-
-It has not been verified yet if PlantUML version 0.6 now properly handles this scenario, any volunteer is welcome to check this,
-in the meanwhile this extension replaces the MikFunction ''uml'' with compatibility with PlantUmL v.0.6
-
 {{Note}} This extension currently works only on *NIX servers
 
 == Install ==
@@ -52,6 +42,8 @@ in the meanwhile this extension replaces the MikFunction ''uml'' with compatibil
 
 === #uml: ===
 
+With Plant UML you write:
+
 <code><nowiki><uml></nowiki>plantumlcode<nowiki></uml></nowiki></code> 
 
 ;Example
@@ -59,6 +51,15 @@ in the meanwhile this extension replaces the MikFunction ''uml'' with compatibil
 
 But this wont work if you use the uml tag in a template and you want to build your uml code with triple braces vaiables, insthead, in your template you can use the <code><nowiki><mikuml></nowiki>actor Mik #99FF99<nowiki><mikuml></nowiki></code> to obtain the same result. 
 
+Note: some parser function such as #replace seems not properly being parsed, a workaround so far is to store your uml code into variable and include those variable into the mikuml tag.
+
+;Example
+<code>
+<nowiki>{{#</nowiki>var:participant|participant name #color<nowiki>}}</nowiki>
+<nowiki><mikuml></nowiki>actor Mik #99FF99<nowiki><mikuml></nowiki>
+</code> 
+
 ==See also==
 * [[Extension:MikFunctions]]
 * [[Extension:PlantUML|PlantUML]]
+* [[Extension:Variables|Variables]]
