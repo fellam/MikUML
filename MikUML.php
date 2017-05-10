@@ -33,8 +33,6 @@ if (defined ( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' )) {
 	$wgExtensionFunctions [] = 'wfMikUML';
 }
 
-$wgHooks ['LanguageGetMagic'] [] = 'wfMikUMLLanguageGetMagic';
-
 $wgExtensionCredits ['parserhook'] [] = array (
 		'name' => 'MikUML',
 		'version' => '1.0',
