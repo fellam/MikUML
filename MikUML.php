@@ -57,20 +57,11 @@ function wfMikUML() {
 // return true;
 // }
 function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
-	// function uml( &$parser, $umlcode = "", $attrs = "", $imagetype = 'svg' ) {
-	// $parser->disableCache();
-// 	global $plantumlImagetype;
-	global $wgOut;
-	echo "DEBUG:";
-	var_dump($umlcode);
-	echo "<br>";
-	echo "UMLPREV:$umlcode<br>";
 	$replace = "<br>";
+	$umlcode = $parser->internalParse ( $umlcode );
 	$umlcode = str_replace ( $replace, "\r\n", $umlcode );
+	$umlcode = $umlcode . "\r\n";
 	echo "UMLAFT:$umlcode<br>";
-	echo "PARSE:<br>";
-	$wgOut->parse( $text );
-	echo "<br>";
 	if (is_null ( $umlcode ) || $umlcode === '') {
 		throw new MikUMLException ( 'umlcode is null or empty' );
 	}
@@ -78,27 +69,7 @@ function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 		throw new MikUMLException ( 'PlantUML extension not found!' );
 	}
 	$result = "";
-// 	if (! is_null ( $imagetype )) {
-// 		$prev_plantumlImagetype = $plantumlImagetype;
-// 		switch ($imagetype) {
-// 			case 'svg' :
-// 			case 'png' :
-// 				$plantumlImagetype = $imagetype;
-// 				break;
-// 		}
-// 	}
-// 	$result = renderUML ( $umlcode, array (), $parser );
 	$result = renderUML ( $umlcode, $args, $parser, $frame);
-// 	$plantumlImagetype = $prev_plantumlImagetype;
-// 	foreach ( explode ( ',', $attrs ) as $key => $value ) {
-// 		$a = explode ( '=', $value );
-// 		// print $a[0]."=".$a[1]."<br/>";
-// 		if (count ( $a ) > 1) {
-// 			$result = preg_replace ( '/' . $a [0] . ':\d+px/i', '' . $a [0] . ':' . $a [1], $result );
-// 		}
-// 		// print "$result <br/>";
-// 	}
-	// exit;
 	return array (
 			$result,
 			'noparse' => true,
