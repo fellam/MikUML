@@ -60,6 +60,15 @@ Note: some parser function such as #replace seems not properly being parsed, a w
 <nowiki><mikuml>{{#</nowiki>var:participant|<nowiki>}}<mikuml></nowiki>
 </code> 
 
+
+{{Note}} PlantUML [http://plantuml.com/link links] examples:
+
+<pre> actor Bob [[http://plantuml.com/sequence]] should be added within <mikuml> tag as actor Bob http://plantuml.com/sequence</pre>
+
+<pre> actor "This is [[http://plantuml.com/sequence Alice<nowiki>]]" should be added within <mikuml> tag as actor "This is [http://plantuml.com/sequence Alice]"</pre>
+
+<pre> Alice -> Bob : hello with [[http://plantuml.com/start{Tooltip for message} some link]] should be added within <mikuml> tag as Alice -> Bob : hello with [http://plantuml.com/start{Tooltip for message} some link]</pre>
+
 ==See also==
 * [[Extension:MikFunctions]]
 * [[Extension:PlantUML|PlantUML]]
