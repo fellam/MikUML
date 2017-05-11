@@ -64,6 +64,7 @@ function mikuml($umlcode, $args, Parser $parser, PPFrame $frame) {
 	$umlcode = str_replace ( "<br/>", "\r\n", $umlcode );
 	$umlcode = str_replace ( "<br />", "\r\n", $umlcode );
 	$umlcode = str_replace ( "&gt;", ">", $umlcode );
+	$umlcode = str_replace ( "&lt;", "<", $umlcode );
 	$umlcode = preg_replace ( "/<a\s(.+?)href=\"(.+?)\">(.+?)<\/a>/is", "[[$2 $3]]", $umlcode );
 	$umlcode = $umlcode . "\n";
 	if (is_null ( $umlcode ) || $umlcode === '') {
